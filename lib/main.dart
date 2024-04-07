@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:tasknews/presentation/categoryscreen/controller/categorycontroller.dart';
 import 'package:tasknews/presentation/commonscreens/startingpage.dart';
 import 'package:tasknews/presentation/favourite_screen/controller/favourite_screen_controller.dart';
+import 'package:tasknews/repository/favourite/model/favouritemodel.dart';
 
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(FavouriteAdapter());
+  var box = await Hive.openBox('favourite');
+
   runApp( MyApp());
 }
 

@@ -28,6 +28,7 @@ class NewsViewState extends State<NewsView> {
 
   void fetchdata() {
     Provider.of<CategoryController>(context, listen: false).fetchdata();
+    Provider.of<FavouriteController>(context, listen: false).getAllCategories();
   }
 
   @override
@@ -282,13 +283,15 @@ class NewsViewState extends State<NewsView> {
                                                     ?.articles?[index]
                                                     .url ??
                                                 " unknown url";
-                                        print(auth1);
+
 
                                         bool alreadyExists =
                                             Provider.of<FavouriteController>(
                                           context,
                                           listen: false,
                                         ).favourit.any((item) => item.url == ur);
+
+                                        print("already existed  $alreadyExists");
 
                                         // If the item doesn't exist, add it to favorites
                                         if (!alreadyExists) {

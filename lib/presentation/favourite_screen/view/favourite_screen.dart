@@ -14,7 +14,7 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   void initState() {
-    Provider.of<FavouriteController>(context, listen: false).favourit;
+    Provider.of<FavouriteController>(context, listen: false).getAllCategories();
     super.initState();
   }
 
